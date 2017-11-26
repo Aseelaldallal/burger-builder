@@ -21,7 +21,9 @@
 
 1. Create Layout Folder under Components since for now, we don't need to manage state
 
+# PROP TYPE VALIDATION
 
+npm install --save prop-types
 
 # ENABLING CSS MODULES EDIT
 
