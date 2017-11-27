@@ -6,7 +6,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 const burger = (props) => {
 
 
-    const transformedIngredients = 
+    let transformedIngredients = 
     Object.keys(props.ingredients)
           .reduce(function(accumulator, currentValue) {
              for(let i=0; i<props.ingredients[currentValue]; i++) {
@@ -15,6 +15,10 @@ const burger = (props) => {
              return accumulator;
           }, []);
 
+    
+    if(transformedIngredients.length === 0) {
+        transformedIngredients= <p>Please start adding Ingredients</p>
+    }
 
     return (
         <div className={classes.Burger}>
