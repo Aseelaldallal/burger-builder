@@ -5,7 +5,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
 
-
+    
     let transformedIngredients = 
     Object.keys(props.ingredients)
           .reduce(function(accumulator, currentValue) {
