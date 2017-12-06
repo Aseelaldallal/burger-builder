@@ -2,6 +2,7 @@ import React from 'react';
 import Auxillary from '../../../hoc/Auxillary';
 import Button from '../../UI/Button/Button';
 
+
 const orderSummary = (props) => {
 
     const ingredientSummary = Object.keys(props.ingredients).map((currentValue)=> {
@@ -20,8 +21,13 @@ const orderSummary = (props) => {
             <Button clicked={props.purchaseCancelled} btnType="Danger">CANCEL</Button>
             <Button clicked={props.purchaseContinued} btnType="Success">CONTINUE</Button>
         </Auxillary>
-    )
+    );
+
 }
+
+
+
+
 
 
 
