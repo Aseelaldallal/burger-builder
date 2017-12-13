@@ -1,6 +1,5 @@
 
 
-
 import React, {Component} from 'react';
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css';
@@ -9,38 +8,60 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
-
     state = {
-        orderFrom: {
-            name:  this.createInputElement('input', 'text', 'Your Name', ''),
-            street: this.createInputElement('input', 'text', 'Street', ''),
-            zipCode: this.createInputElement('input', 'text', 'Postal Code', ''),
-            country: this.createInputElement('input', 'text', 'Country', ''),
-            email: this.createInputElement('input', 'email', 'Email', ''),
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your Name'
+                },
+                value: ''
+            }, 
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street'
+                },
+                value: ''
+            },
+            postalCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Postal Code'
+                },
+                value: ''
+            },
+            country: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Country'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Email'
+                },
+                value: ''
+            },
             deliveryMethod: {
                 elementType: 'select',
-                elementConfig: {
+                elementConfig:  {
                     options: [
-                        { value: 'fastest', displayValue: 'Fastest'},
-                        { value: 'cheapest', displayValue: 'Cheapest'}
+                        {displayName: 'Fastest', value: 'fastest'},
+                        {displayName: 'Cheapest', value: 'cheapest'}
                     ]
-                }
+                },
+                value: 'fastest'
             }
-        },
-        loading: false
+        }
     }
-
-    createInputElement(type, configType, placeholder, value) {
-        return  {
-            elementType: 'input',
-            elementConfig:  {
-                type: 'text',
-                placeholder: 'Your Name',
-            }
-          }
-    }
-
-    
 
     orderHandler = (event) => {
         event.preventDefault(); 
@@ -48,7 +69,6 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price, // Calculate on server in production, to make sure user isn't manipulating
-            
         }
         axios.post('/orders.json', order)
              .then(response => {
@@ -61,12 +81,17 @@ class ContactData extends Component {
     }
 
     render() {
+        const formElements = Object.entries(this.state.orderForm).map(element => {
+            return (
+                <Input key={element[0]} 
+                       elementType={element[1].elementType} 
+                       elementConfig={element[1].elementConfig}
+                       value={element[1].value} />
+            );
+        })
         let form = (
-            <form>
-                <Input elementType="..." elementConfig="..." value="..." />
-                <Input inputtype="input" type="email" name="email" placeholder="Your Email" />
-                <Input inputtype="input" type="text" name="street" placeholder="Street" />
-                <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
+            <form> 
+                {formElements}
                 <Button btnType="Success" clicked={this.orderHandler}> ORDER </Button>
             </form>
         );
