@@ -31,3 +31,10 @@
     border: 1px solid red;
     background-color: rgb(253, 153, 142);
 }
+
+.ValidationText {
+    color: red;
+    text-align: left;
+    font-size: 0.8rem;
+    margin-bottom: 0rem;
+}
