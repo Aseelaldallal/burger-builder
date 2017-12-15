@@ -1,11 +1,10 @@
-
-
 import React, {Component} from 'react';
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import {connect} from 'react-redux';
 
 class ContactData extends Component {
     state = {
@@ -139,7 +138,7 @@ class ContactData extends Component {
         console.log(formData);
         const order = {
             ingredients: this.props.ingredients,
-            price: this.props.price, // Calculate on server in production, to make sure user isn't manipulating
+            price: this.props.totalPrice, // Calculate on server in production, to make sure user isn't manipulating
             orderData: formData
         }
         axios.post('/orders.json', order)
@@ -183,4 +182,13 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+
+
+const mapStateToProps = state => {
+    return {
+        ingredients: state.ingredients,
+        totalPrice: state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(ContactData);
