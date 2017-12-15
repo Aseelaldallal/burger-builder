@@ -16,13 +16,7 @@ import * as actionTypes from '../../store/actions';
 import { connect } from 'react-redux';
 
 
-// Global Const -- All Caps
-const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
-}
+
 
 class BurgerBuilder extends Component {
 
@@ -57,31 +51,6 @@ class BurgerBuilder extends Component {
         }, 0)
         this.setState({ purchaseable: sum> 0});
     }
-
-    // addIngredientHandler = (type) => {
-    //     const updatedIngredients = {...this.state.ingredients};
-    //     updatedIngredients[type] = this.state.ingredients[type] + 1;
-    //     const updatedPrice = this.state.totalPrice + INGREDIENT_PRICES[type];
-    //     this.setState({
-    //         ingredients: updatedIngredients,
-    //         totalPrice: updatedPrice
-    //     });
-    //     console.log(updatedIngredients);
-    //     this.updatePurchaseState(updatedIngredients);
-    // }
-
-    // removeIngredientHandler = (type) => {
-    //     if(this.state.ingredients[type] > 0) {
-    //         const updatedIngredients = {...this.state.ingredients};
-    //         updatedIngredients[type] = this.state.ingredients[type] - 1;
-    //         const updatedPrice = this.state.totalPrice - INGREDIENT_PRICES[type];
-    //         this.setState({
-    //             ingredients: updatedIngredients,
-    //             totalPrice: updatedPrice
-    //         });
-    //         this.updatePurchaseState(updatedIngredients);
-    //     }
-    // }
 
     purchaseHandler = () => {
         this.setState({purchasing: true});
