@@ -23,12 +23,12 @@ class Checkout extends Component {
         return (
             <div>
                 <CheckoutSummary 
-                    ingredients={this.state.ingredients} 
+                    ingredients={this.props.ingredients} 
                     checkoutCancelled={this.checkoutCancelledHandler}
                     checkoutContinued={this.checkoutContinuedHandler}/>
                 <Route 
                     path={this.props.match.path + '/contact-data'} 
-                    render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>)}/>
+                    component={ContactData}/>
             </div>
         );
     }
@@ -38,12 +38,8 @@ class Checkout extends Component {
 
 const mapPropsToState = state => {
     return {
-
+        ingredients: state.ingredients
     }
 }
 
-const mapDispatchToProps = dispatch => {
-
-}
-
-export default connect(mapPropsToState, mapDispatchToProps)(Checkout);
+export default connect(mapPropsToState)(Checkout);
