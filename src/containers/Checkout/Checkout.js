@@ -1,33 +1,15 @@
-
-
+// REACT
 import React, {Component} from 'react';
+// CONTAINERS AND COMPONENTS
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import  {Route} from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
+// REACT ROUTER
+import  {Route} from 'react-router-dom';
+// REDUX
+import {connect} from 'react-redux';
+
 
 class Checkout extends Component {
-
-    state = {
-        ingredients: null,
-        totalPrice: 0
-    }
-
-    componentWillMount() {
-        const query = new URLSearchParams(this.props.location.search);
-        let ingredients = {};
-        let price = 0;
-        for(let param of query.entries()) {
-            if(param[0] === 'price') {
-                price = param[1];
-            } else {
-                ingredients[param[0]] = param[1];
-            }   
-        }
-        this.setState({
-            ingredients: ingredients,
-            totalPrice: price
-        })
-    }
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
@@ -54,4 +36,14 @@ class Checkout extends Component {
 }
 
 
-export default Checkout;
+const mapPropsToState = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+
+}
+
+export default connect(mapPropsToState, mapDispatchToProps)(Checkout);

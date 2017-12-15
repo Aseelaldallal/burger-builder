@@ -59,14 +59,7 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        let query = Object.entries(this.props.ingredients).map(([key, val]) => {
-            return `${encodeURIComponent(key)}=${val}`;
-        }).join("&");
-        query += "&price=" + this.props.totalPrice.toFixed(2);
-        this.props.history.push({
-            pathname:'/checkout' ,
-            search: '?' + query}
-        );
+        this.props.history.push('/checkout');
     }
 
     render() {
@@ -95,9 +88,9 @@ class BurgerBuilder extends Component {
                 purchaseContinued={this.purchaseContinueHandler}
                 price={this.props.totalPrice.toFixed(2)}/>;
         }
-        // if(this.state.loading) {
-        //     orderSummary = <Spinner />
-        // }
+        if(this.state.loading) {
+            orderSummary = <Spinner />
+        }
         return(
             <Auxillary>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
