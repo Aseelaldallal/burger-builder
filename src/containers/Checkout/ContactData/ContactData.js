@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import {connect} from 'react-redux';
+import * as actions from '../../../store/actions/';
 
 class ContactData extends Component {
     state = {
@@ -116,7 +118,6 @@ class ContactData extends Component {
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
-        console.log(updatedFormElement);
         updatedOrderForm[inputIdentifier] = updatedFormElement;
         let formIsValid = true;
         for(let inputIdentifier in updatedOrderForm) {
@@ -130,7 +131,6 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault(); 
-        this.setState({ loading: true});
         const formData = {}
         for(let formElement in this.state.orderForm) {
             formData[formElement] = this.state.orderForm[formElement].value;
@@ -140,14 +140,7 @@ class ContactData extends Component {
             price: this.props.totalPrice, // Calculate on server in production, to make sure user isn't manipulating
             orderData: formData
         }
-        axios.post('/orders.json', order)
-             .then(response => {
-                this.setState({loading: false});
-                this.props.history.push('/');
-             })
-             .catch(error=> {
-                this.setState({loading: false});
-             })
+       
     }
 
     render() {
@@ -190,4 +183,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+    orderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
