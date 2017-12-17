@@ -140,7 +140,7 @@ class ContactData extends Component {
             price: this.props.totalPrice, // Calculate on server in production, to make sure user isn't manipulating
             orderData: formData
         }
-       
+       this.props.orderBurger(order);
     }
 
     render() {
@@ -184,7 +184,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    orderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+    return {
+        orderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
