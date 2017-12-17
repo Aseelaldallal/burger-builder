@@ -8,9 +8,10 @@ import registerServiceWorker from './registerServiceWorker';
 // REACT-ROUTER
 import {BrowserRouter} from 'react-router-dom';
 // REDUX
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
+import thunk from 'redux-thunk';
 // APP 
 import App from './App';
 // CSS
@@ -19,7 +20,8 @@ import './index.css';
 
 // ================= RENDER APP ================ //
 
-const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // compose is a fallback
+const store = createStore(burgerBuilderReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}> 
