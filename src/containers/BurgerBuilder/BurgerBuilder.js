@@ -12,7 +12,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 // AXIOS
 import axios from '../../axios-orders';
 // REDUX
-import * as actionTypes from '../../store/actions';
+import * as burgerBuilderActions from '../../store/actions/'; // it automatically points to index.js
 import { connect } from 'react-redux';
 
 
@@ -112,8 +112,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addIngredient: (ingredient)=> dispatch({type: actionTypes.ADD_INGREDIENT, ingredient: ingredient}),
-        removeIngredient: (ingredient)=> dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredient: ingredient})
+        addIngredient: (ingredient)=> dispatch(burgerBuilderActions.addIngredient(ingredient)),
+        removeIngredient: (ingredient)=> dispatch(burgerBuilderActions.removeIngredient(ingredient))
     }
 }
 
