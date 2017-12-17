@@ -135,7 +135,6 @@ class ContactData extends Component {
         for(let formElement in this.state.orderForm) {
             formData[formElement] = this.state.orderForm[formElement].value;
         }
-        console.log(formData);
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.totalPrice, // Calculate on server in production, to make sure user isn't manipulating
