@@ -8,9 +8,10 @@ import registerServiceWorker from './registerServiceWorker';
 // REACT-ROUTER
 import {BrowserRouter} from 'react-router-dom';
 // REDUX
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
+import orderReducer from './store/reducers/order';
 import thunk from 'redux-thunk';
 // APP 
 import App from './App';
@@ -20,8 +21,14 @@ import './index.css';
 
 // ================= RENDER APP ================ //
 
+const rootReducer = combineReducers({
+    burgerBuilder: burgerBuilderReducer,
+    order: orderReducer
+}) // merge everything into one reducer
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // compose is a fallback
-const store = createStore(burgerBuilderReducer, composeEnhancers(applyMiddleware(thunk)));
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
     <Provider store={store}> 
