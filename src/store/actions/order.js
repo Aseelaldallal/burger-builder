@@ -19,15 +19,18 @@ const purchaseBurgerFailed = (error) => {
     }
 }
 
+const purchaseBurgerStart = () => {
+    return {
+        type: actionTypes.PURCHASE_BURGER_START
+    };
+}
+
 // Redux thunk;
-export const purchaseBurgerStart = (orderData) => {
+export const purchaseBurger = (orderData) => {
     return dispatch => {
+        dispatch(purchaseBurgerStart());
         axios.post('/orders.json', orderData)
         .then(response => {
-            console.log("RES.DATA: ", response.data);
-            console.log("Order Data: ");
-            console.log(orderData);
-            console.log("----------------");
             dispatch(purchaseBurgerSuccess(response.data, orderData))
         })
         .catch(error=> {
@@ -35,3 +38,4 @@ export const purchaseBurgerStart = (orderData) => {
         })
     }
 }
+
