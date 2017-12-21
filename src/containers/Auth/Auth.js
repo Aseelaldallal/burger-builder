@@ -38,7 +38,7 @@ class Auth extends Component {
     }
 
     render() {
-        const formElements = Object.entries(this.state.orderForm).map(element => {
+        const formElements = Object.entries(this.state.controls).map(element => {
             return (
                 <Input key={element[0]} 
                        elementType={element[1].elementType} 
