@@ -13,3 +13,7 @@ export const PURCHASE_INIT = 'PURCHASE_INIT'; // dispatched whenever we load che
 export const FETCH_ORDERS_START = 'FETCH_ORDERS_START'; 
 export const FETCH_ORDERS_SUCCESS = 'FETCH_ORDERS_SUCCESS'; 
 export const FETCH_ORDERS_FAILED = 'FETCH_ORDERS_FAILED'; 
+
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAILED = 'AUTH_FAILED';

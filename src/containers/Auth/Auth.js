@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 import classes from './Auth.css';
+import * as actions from '../../store/actions/';
+import {connect} from 'react-redux';
 
 class Auth extends Component {
 
@@ -78,6 +80,10 @@ class Auth extends Component {
         })
     }
 
+    submitHandler = (event) => {
+        event.preventDefault();
+        this.props.authenticate(this.state.controls.email, this.state.controls.password);
+    }
 
     render() {
         const formElements = Object.entries(this.state.controls).map(element => {
@@ -94,7 +100,7 @@ class Auth extends Component {
         });
         return (
             <div className={classes.Auth}>
-                <form onSubmit={this.orderHandler}> 
+                <form onSubmit={this.submitHandler}> 
                     {formElements}
                     <Button btnType="Success"> SIGN IN </Button>
                 </form>
@@ -104,4 +110,10 @@ class Auth extends Component {
 
 }
 
-export default Auth;
+export const mapDispatchToProps = dispatch => {
+    return {
+        authenticate: (email, password) => dispatch(actions.auth(email,password))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
