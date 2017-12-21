@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 import Auxillary from '../../hoc/Auxillary/Auxillary';
 
+
+
+
 const withErrorHandler = (WrappedComponent, axios) => {
 
     return class extends Component {

@@ -22,7 +22,7 @@ export const removeIngredient = (ingredient) => {
 // This syntax is available due to redux-thunk
 export const initIngredients = () => {
     return dispatch => {
-        axios.get('https://react-burger-builder-4b067.firebaseio.com/ingredients.json')
+        axios.get('/ingredients.json')
         .then(response => {
             dispatch(setIngredients(response.data));
         })
