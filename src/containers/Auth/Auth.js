@@ -37,7 +37,8 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             } 
-        }
+        },
+        registerMode: true
     }
 
     checkValidity = (value, rules) => {
@@ -82,7 +83,15 @@ class Auth extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.authenticate(this.state.controls.email.value, this.state.controls.password.value);
+        this.props.authenticate(this.state.controls.email.value, this.state.controls.password.value, this.state.registerMode);
+    }
+
+    swithAuthModeHandler = () => {
+        this.setState(prevState=> {
+            return {
+                registerMode: !prevState.registerMode
+            }
+        })
     }
 
     render() {
@@ -102,8 +111,11 @@ class Auth extends Component {
             <div className={classes.Auth}>
                 <form onSubmit={this.submitHandler}> 
                     {formElements}
-                    <Button btnType="Success"> SIGN IN </Button>
+                    <Button btnType="Success"> SUBMIT </Button>
                 </form>
+                <Button 
+                    clicked={this.swithAuthModeHandler}
+                    btnType="Danger"> SWITCH TO {this.state.registerMode ? 'SIGN IN' : 'REGISTER'}</Button>
             </div>
         );
     };
@@ -112,7 +124,7 @@ class Auth extends Component {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        authenticate: (email, password) => dispatch(actions.auth(email,password))
+        authenticate: (email, password, registerMode) => dispatch(actions.auth(email,password, registerMode))
     }
 }
 
