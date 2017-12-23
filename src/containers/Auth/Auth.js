@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import classes from './Auth.css';
 import * as actions from '../../store/actions/';
 import {connect} from 'react-redux';
@@ -107,12 +108,23 @@ class Auth extends Component {
                        changed={(event) => this.inputChangedHandler(event, element[0])}/>
             );
         });
+        let form = (
+            <form onSubmit={this.submitHandler}> 
+                {formElements}
+                <Button btnType="Success"> SUBMIT </Button>
+            </form>
+        );
+        if(this.props.loading) {
+            form = <Spinner />;
+        }
+        let errorMessage = null;
+        if(this.props.error) {
+            errorMessage = <p>{this.props.error.message}</p>;
+        }
         return (
             <div className={classes.Auth}>
-                <form onSubmit={this.submitHandler}> 
-                    {formElements}
-                    <Button btnType="Success"> SUBMIT </Button>
-                </form>
+                {errorMessage}
+                {form}
                 <Button 
                     clicked={this.swithAuthModeHandler}
                     btnType="Danger"> SWITCH TO {this.state.registerMode ? 'SIGN IN' : 'REGISTER'}</Button>
@@ -122,10 +134,17 @@ class Auth extends Component {
 
 }
 
+export const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error
+    }
+}
+
 export const mapDispatchToProps = dispatch => {
     return {
         authenticate: (email, password, registerMode) => dispatch(actions.auth(email,password, registerMode))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
