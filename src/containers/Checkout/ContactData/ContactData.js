@@ -157,7 +157,7 @@ class ContactData extends Component {
             price: this.props.totalPrice.toFixed(2), // Calculate on server in production, to make sure user isn't manipulating
             orderData: formData
         }
-       this.props.orderBurger(order);
+       this.props.orderBurger(order, this.props.token);
     }
 
     render() {
@@ -197,13 +197,14 @@ const mapStateToProps = state => {
     return {
         ingredients: state.burgerBuilder.ingredients,
         totalPrice: state.burgerBuilder.totalPrice,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        orderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData))
+        orderBurger: (orderData, token) => dispatch(actions.purchaseBurger(orderData, token))
     }
 }
 
