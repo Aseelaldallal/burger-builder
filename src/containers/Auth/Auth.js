@@ -82,7 +82,7 @@ class Auth extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.authenticate(this.state.controls.email, this.state.controls.password);
+        this.props.authenticate(this.state.controls.email.value, this.state.controls.password.value);
     }
 
     render() {
