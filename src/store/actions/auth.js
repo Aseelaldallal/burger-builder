@@ -91,3 +91,9 @@ export const checkAuthState = () => {
         return;
     }
 }
+
+export const clearAuthError = () => {
+    return {
+        type: actionTypes.CLEAR_AUTH_ERROR
+    }
+}

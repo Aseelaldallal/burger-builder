@@ -71,6 +71,10 @@ class Auth extends Component {
     }
 
     swithAuthModeHandler = () => {
+        this.props.clearAuthError();
+        // const clearedEmail = updateObject(this.state.controls.email, {value: '', valid: false, touched: false});
+        // const clearedPassword = updateObject(this.state.controls.password, {value: '', valid: false, touched: false});
+        // const updatedControls = updateObject(this.state.controls, { email: clearedEmail, password: clearedPassword});
         this.setState(prevState=> {
             return {
                 registerMode: !prevState.registerMode
@@ -157,7 +161,8 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
     return {
         authenticate: (email, password, registerMode) => dispatch(actions.auth(email,password, registerMode)),
-        setAuthRedirectPath: ()=> dispatch(actions.setAuthRedirectPath('/'))
+        setAuthRedirectPath: ()=> dispatch(actions.setAuthRedirectPath('/')),
+        clearAuthError: ()=>dispatch(actions.clearAuthError())
     }
 }
 
