@@ -78,6 +78,19 @@ class Auth extends Component {
         })
     }
 
+    getErrorMessage(error) {
+        switch(error.message) {
+            case("EMAIL_EXISTS"): return "This email address is already in use by another account";
+            case("TOO_MANY_ATTEMPTS_TRY_LATER"): return "Too many attempts! Try again later";
+            case("EMAIL_NOT_FOUND"): return "Unrecognized email address. Did you register?";
+            case("INVALID_PASSWORD"): return "Eeek... Wrong password";
+            case("MISSING_PASSWORD"): return "You must enter a password";
+            case("INVALID_EMAIL"): return "Please enter a valid email address";
+            case("WEAK_PASSWORD : Password should be at least 6 characters"): return "Weak Password. Password must be at least 6 characters long";
+            default: return error.message;
+        }
+    }
+
     render() {
         const formElements = Object.entries(this.state.controls).map(element => {
             return (
@@ -102,7 +115,7 @@ class Auth extends Component {
         }
         let errorMessage = null;
         if(this.props.error) {
-            errorMessage = <p>{this.props.error.message}</p>;
+            errorMessage = <p className={classes.errorMsg}>{this.getErrorMessage(this.props.error)}</p>;
         }
         let authRedirect = null;
         if(this.props.isAuthenticated) {

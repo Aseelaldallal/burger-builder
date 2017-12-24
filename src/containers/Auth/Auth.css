@@ -37,6 +37,10 @@ hr {
     margin-bottom: 0;
 }
 
+.errorMsg {
+    color: red;
+}
+
 @media (min-width: 600px) {
     .Auth {
         width: 500px;
