@@ -11,7 +11,7 @@ const input = (props) => {
         inputClasses.push(classes.Invalid);
         validationError = (
             <p className={classes.ValidationText}>
-                Please enter a valid value!
+                { props.validationMsg ? props.validationMsg : "Please enter a valid value!" }
             </p>
         );
     }
