@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
     auth: authReducer
 }) // merge everything into one reducer
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // compose is a fallback
+const composeEnhancers = (process.env.NODE_ENV ==='development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__: null) || compose; // compose is a fallback
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
