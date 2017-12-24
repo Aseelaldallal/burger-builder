@@ -41,7 +41,7 @@ class Auth extends Component {
                 touched: false
             } 
         },
-        registerMode: true
+        registerMode: false
     }
 
 
@@ -108,14 +108,23 @@ class Auth extends Component {
         if(this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath}/>
         }
+        const title = this.state.registerMode ? 'REGISTER' : 'SIGN IN';
+        const signInMsg = 'Already have an account?';
+        const registerMsg = "Don't have an account?";
+        const msg = this.state.registerMode ? signInMsg : registerMsg;
         return (
             <div className={classes.Auth}>
+                <div className={classes.title}> {title} </div>
                 {authRedirect}
-                {errorMessage}
-                {form}
-                <Button 
-                    clicked={this.swithAuthModeHandler}
-                    btnType="Danger"> SWITCH TO {this.state.registerMode ? 'SIGN IN' : 'REGISTER'}</Button>
+                <div className={classes.content}>
+                    {errorMessage}
+                    {form}
+                    <hr/>
+                    <p className={classes.msg}>{msg}</p>
+                    <Button 
+                        clicked={this.swithAuthModeHandler}
+                        btnType="Danger"> {!this.state.registerMode ? 'REGISTER' : 'SIGN IN'}</Button>
+                </div>
             </div>
         );
     };

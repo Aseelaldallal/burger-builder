@@ -2,6 +2,12 @@
 
 Things to fix
 
+Front Page:
+Make Logo Clickable - DONE
+Center Burger
+
+
+
 Fix error messages on sign in
 distinguish between register and sign in
 confirm order
