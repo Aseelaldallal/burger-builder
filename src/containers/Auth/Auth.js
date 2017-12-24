@@ -23,6 +23,7 @@ class Auth extends Component {
                     required: true,
                     isEmail: true
                 }, 
+                validationMessage: 'Please enter a valid email address',
                 valid: false,
                 touched: false
             }, 
@@ -37,6 +38,7 @@ class Auth extends Component {
                     required: true,
                     minLength: 6
                 }, 
+                validationMessage: 'Password must be at least 6 characters long',
                 valid: false,
                 touched: false
             } 
@@ -74,9 +76,6 @@ class Auth extends Component {
 
     swithAuthModeHandler = () => {
         this.props.clearAuthError();
-        // const clearedEmail = updateObject(this.state.controls.email, {value: '', valid: false, touched: false});
-        // const clearedPassword = updateObject(this.state.controls.password, {value: '', valid: false, touched: false});
-        // const updatedControls = updateObject(this.state.controls, { email: clearedEmail, password: clearedPassword});
         this.setState(prevState=> {
             return {
                 registerMode: !prevState.registerMode
@@ -107,6 +106,7 @@ class Auth extends Component {
                        invalid={!element[1].valid}
                        shouldValidate={element[1].validation}
                        touched={element[1].touched}
+                       validationMsg={element[1].validationMessage}
                        changed={(event) => this.inputChangedHandler(event, element[0])}/>
             );
         });
