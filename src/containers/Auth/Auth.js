@@ -67,7 +67,9 @@ class Auth extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.authenticate(this.state.controls.email.value, this.state.controls.password.value, this.state.registerMode);
+        if(this.state.controls.email.valid && this.state.controls.password.valid) {
+            this.props.authenticate(this.state.controls.email.value, this.state.controls.password.value, this.state.registerMode);
+        } 
     }
 
     swithAuthModeHandler = () => {
@@ -111,7 +113,7 @@ class Auth extends Component {
         let form = (
             <form onSubmit={this.submitHandler}> 
                 {formElements}
-                <Button btnType="Success"> SUBMIT </Button>
+                <Button btnType="Success" disabled={!(this.state.controls.email.valid && this.state.controls.password.valid)}> SUBMIT </Button>
             </form>
         );
         if(this.props.loading) {
