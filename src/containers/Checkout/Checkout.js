@@ -1,11 +1,10 @@
 // REACT
 import React, {Component} from 'react';
 // CONTAINERS AND COMPONENTS
-import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 import Burger from '../../components/Burger/Burger';
 // REACT ROUTER
-import  {Route, Redirect} from 'react-router-dom';
+import  {Redirect} from 'react-router-dom';
 // REDUX
 import {connect} from 'react-redux';
 // CSS
@@ -52,13 +51,6 @@ class Checkout extends Component {
                             <Burger ingredients={this.props.ingredients} />
                         </div>
                     </div>
-                    {/* <CheckoutSummary 
-                        ingredients={this.props.ingredients} 
-                        checkoutCancelled={this.checkoutCancelledHandler}
-                        checkoutContinued={this.checkoutContinuedHandler}/>
-                    <Route 
-                        path={this.props.match.path + '/contact-data'} 
-                        component={ContactData}/>    */}
                 </div>
             )
         }

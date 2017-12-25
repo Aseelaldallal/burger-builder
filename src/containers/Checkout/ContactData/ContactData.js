@@ -23,20 +23,22 @@ class ContactData extends Component {
                     required: true
                 }, 
                 valid: false,
-                touched: false
+                touched: false,
+                validationMessage: 'Name cannot be blank'
             }, 
-            street: {
+            address: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Street'
+                    placeholder: 'Address'
                 },
                 value: '',
                 validation: {
                     required: true
                 }, 
                 valid: false,
-                touched: false
+                touched: false,
+                validationMessage: 'We need your address to deliver the burger!'
             },
             postalCode: {
                 elementType: 'input',
@@ -47,24 +49,11 @@ class ContactData extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 6,
-                    maxLength: 6
+                    isCanadianPostalCode: true
                 }, 
                 valid: false,
-                touched: false
-            },
-            country: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Country'
-                },
-                value: '',
-                validation: {
-                    required: true
-                }, 
-                valid: false,
-                touched: false
+                touched: false,
+                validationMessage: 'Please enter a valid Canadian Postal Code - Format: X0X 0X0'
             },
             email: {
                 elementType: 'input',
@@ -78,7 +67,8 @@ class ContactData extends Component {
                     isEmail: true
                 }, 
                 valid: false,
-                touched: false
+                touched: false,
+                validationMessage: 'Please enter a valid email address'
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -145,7 +135,8 @@ class ContactData extends Component {
                        invalid={!element[1].valid}
                        shouldValidate={element[1].validation}
                        touched={element[1].touched}
-                       changed={(event) => this.inputChangedHandler(event, element[0])}/>
+                       changed={(event) => this.inputChangedHandler(event, element[0])}
+                       validationMsg={element[1].validationMessage}/>
             );
         })
         let form = (
