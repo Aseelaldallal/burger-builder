@@ -12,6 +12,7 @@
     .Burger {
         width: 350px;
         height: 300px;
+        max-width: 100%;
     }
 }
 
@@ -19,6 +20,7 @@
     .Burger {
         width: 450px;
         height: 400px;
+        max-width: 100%;
     }
 }
 
@@ -26,6 +28,7 @@
     .Burger {
         width: 700px;
         height: 600px;
+        max-width: 100%;
     }
 }
 

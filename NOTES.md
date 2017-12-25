@@ -9,12 +9,24 @@ Sign in page:
 -- Fix Visual Look - DONE
 -- Distinguish between register and sign in - DONE
 -- Fix error messages on sign in - DONE
--- Clear Error Messages on button click
--- Prevent submission when errors exist
+-- Clear Error Messages on button click - DONE
+-- Prevent submission when errors exist - DONE
+
+Contact Data:
+-- Add Relevant Error
+
+Checkout Process:
+-- Fix UI
+-- Confirm order
+-- show order summary
+
+Orders Page:
+-- Add date and time to order
+-- Fix UI
 
 
-distinguish between register and sign in
-confirm order
-Add date and time to order
-Make Logo Clickable - redirects you to home
-Add Dev Notes
+Dev Notes:
+-- Add Dev Notes
+
+
+Add a maximum number of ingredients
