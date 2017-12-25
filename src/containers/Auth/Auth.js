@@ -7,6 +7,7 @@ import * as actions from '../../store/actions/';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {updateObject, checkValidity} from '../../shared/utility';
+// import FaGoogle from 'react-icons/lib/fa/google';
 
 class Auth extends Component {
 
