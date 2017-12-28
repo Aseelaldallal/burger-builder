@@ -116,7 +116,8 @@ class ContactData extends Component {
             ingredients: this.props.ingredients,
             price: this.props.totalPrice.toFixed(2), // Calculate on server in production, to make sure user isn't manipulating
             orderData: formData,
-            userId: this.props.userId
+            userId: this.props.userId,
+            date: Date.now()
         }
        this.props.orderBurger(order, this.props.token);
     }

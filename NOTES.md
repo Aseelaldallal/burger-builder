@@ -13,11 +13,9 @@ Sign in page:
 -- Prevent submission when errors exist - DONE
 
 Contact Data:
--- Add Relevant Error
-
+-- Add Relevant Error -- DONE
 Checkout Process:
--- Fix UI
---- Combine Contact Data and Burger Image
+-- Fix UI -- DONE
 -- When order submitted, show order summary
 
 Orders Page:
