@@ -104,10 +104,6 @@ class ContactData extends Component {
             orderForm: updatedOrderForm,
             formIsValid: formIsValid
         })
-
-
-
-
     }
 
     orderHandler = (event) => {

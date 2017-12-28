@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 // CONTAINERS AND COMPONENTS
 import ContactData from './ContactData/ContactData';
 import Burger from '../../components/Burger/Burger';
-import Button from '../../components/UI/Button/Button';
 // REACT ROUTER
 import  {Redirect} from 'react-router-dom';
 // REDUX
@@ -36,7 +35,7 @@ class Checkout extends Component {
         let summary = <Redirect to="/" />
 
         if(this.props.ingredients) {
-            const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;
+            const purchasedRedirect = this.props.purchased ? <Redirect to="/orders" /> : null;
             summary = (
                 <div className={classes.Checkout}>
                     {purchasedRedirect}
