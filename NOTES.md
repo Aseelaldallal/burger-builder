@@ -17,8 +17,8 @@ Contact Data:
 
 Checkout Process:
 -- Fix UI
--- Confirm order
--- show order summary
+--- Combine Contact Data and Burger Image
+-- When order submitted, show order summary
 
 Orders Page:
 -- Add date and time to order
