@@ -19,8 +19,9 @@ Checkout Process:
 -- When order submitted, show order summary
 
 Orders Page:
--- Add date and time to order
--- Fix UI
+-- Add date and time to order -- DONE
+-- Order by Date -- DONE
+-- Fix UI -- DONE
 
 
 Dev Notes:

@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 // Components and Containers
 import Order from '../../components/Order/Order';
+import Modal from '../../components/UI/Modal/Modal';
 // Axios
 import axios from '../../axios-orders';
 // HOC
@@ -18,6 +19,10 @@ class Orders extends Component {
         this.props.fetchOrders(this.props.token, this.props.userId);
     }
 
+    closeModal = () => {
+        this.props.purchaseReset();
+    }
+
     render() {
         let orders = <Spinner />
         if(!this.props.loading) {
@@ -30,8 +35,21 @@ class Orders extends Component {
                 );
             });
         }
-        return(
+        let modal = null;
+        if(this.props.purchased) {
+            modal = (
+                <Modal show modalClosed={this.closeModal}>
+                    <p style={{
+                        textAlign: 'center',
+                        color: '#5C9210',
+                        fontWeight: 'bold'
+                    }}> We just placed your order! </p>
+                </Modal>
+            )
+        }
+        return(       
             <div>
+                {modal}
                 {orders}
             </div>
         );
@@ -51,7 +69,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId))
+        fetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId)),
+        purchaseReset: () => dispatch(actions.purchaseInit())
     }
 }
 
