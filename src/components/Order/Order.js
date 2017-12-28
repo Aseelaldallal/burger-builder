@@ -18,21 +18,14 @@ const order = (props) => {
     }
 
     const ingredientOutput = ingredients.map(ig => {
-        return <span 
-                key={ig.name}
-                style={{
-                    textTransform: 'capitalize',
-                    display: 'inline-block', 
-                    margin: '0 8px',
-                    border: '1px solid gray',
-                    padding: '5px'
-                }}>{ig.name} ({ig.amount}) </span>
+        return <li key={ig.name}>{ig.name}: {ig.amount} </li>;
     })
+
     return(
         <div className={classes.Order}>
-            <p> Date: {moment(props.date).format('MMMM Do YYYY, h:mm:ss a')} </p>
-            <p> Ingredients: {ingredientOutput}</p>
-            <p> Price: <strong> {props.price.toFixed(2)} </strong></p>
+            <p> <strong>Order Date:  </strong>{moment(props.date).format('MMMM Do YYYY, h:mm:ss a')} </p>
+            <p> <strong>Ingredients: </strong> </p><ul>{ingredientOutput}</ul>
+            <p> <strong>Price:  </strong> {props.price.toFixed(2)}</p>
         </div>
     );
 }
