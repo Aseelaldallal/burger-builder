@@ -21,12 +21,21 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ORDERS_START: 
             return updateObject(state, { loading: true});
         case actionTypes.FETCH_ORDERS_SUCCESS: 
-            return updateObject(state, { orders: action.orders, loading: false});
+            return fetchOrdersSuccess(state,action);
         case actionTypes.FETCH_ORDERS_FAILED: 
             return updateObject(state, { loading: false});
         default:
             return state;
     }
+}
+
+const fetchOrdersSuccess = (state,action) => {
+    const sortedOrders = action.orders.sort(sortByDateDesc);
+    return updateObject(state, { orders: sortedOrders, loading: false});
+}
+
+const sortByDateDesc = function (lhs, rhs) {
+    return lhs.date < rhs.date ? 1 : lhs.date > rhs.date ? -1 : 0;
 }
 
 export default reducer;
