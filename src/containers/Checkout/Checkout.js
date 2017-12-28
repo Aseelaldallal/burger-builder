@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 // CONTAINERS AND COMPONENTS
 import ContactData from './ContactData/ContactData';
 import Burger from '../../components/Burger/Burger';
+import Button from '../../components/UI/Button/Button';
 // REACT ROUTER
 import  {Redirect} from 'react-router-dom';
 // REDUX
@@ -25,11 +26,11 @@ class Checkout extends Component {
     render() {
 
         const burgerBox ={
-            width: '500px'
+            width: '500px',
         }
 
         const contactBox ={
-            width: '500px'
+            width: '500px',
         }
 
         let summary = <Redirect to="/" />
@@ -42,13 +43,13 @@ class Checkout extends Component {
                     <h1>We hope it tastes great!</h1>
                     <hr/>
                     <div className={classes.Container}>
-                        <div style={contactBox}>
-                            <h2> Your Details </h2>
-                            <ContactData />
-                        </div>
                         <div style={burgerBox}>
                             <h2> Your Burger </h2>
                             <Burger ingredients={this.props.ingredients} />
+                        </div>
+                        <div style={contactBox}>
+                            <h2> Your Details </h2>
+                            <ContactData />
                         </div>
                     </div>
                 </div>
