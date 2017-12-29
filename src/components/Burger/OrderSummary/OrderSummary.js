@@ -1,7 +1,7 @@
 import React from 'react';
 import Auxillary from '../../../hoc/Auxillary/Auxillary';
 import Button from '../../UI/Button/Button';
-
+import classes from './OrderSummary.css';
 
 const orderSummary = (props) => {
 
@@ -19,8 +19,11 @@ const orderSummary = (props) => {
             <p><strong>Total Price: {props.price}</strong></p>
             
             <p>Continue to Checkout?</p>
-            <Button clicked={props.purchaseCancelled} btnType="Danger">CANCEL</Button>
-            <Button clicked={props.purchaseContinued} btnType="Success">CONTINUE</Button>
+            <hr className={classes.ButtonBoxHr}/>
+            <div className={classes.ButtonBox}>
+                <Button clicked={props.purchaseCancelled} btnType="Danger">CANCEL</Button>
+                <Button clicked={props.purchaseContinued} btnType="Success">CONTINUE</Button>
+            </div>
         </Auxillary>
     );
 

@@ -40,7 +40,7 @@ class Checkout extends Component {
                 <div className={classes.Checkout}>
                     {purchasedRedirect}
                     <h1>We hope it tastes great!</h1>
-                    <hr/>
+                    <hr className={classes.CheckoutHr}/>
                     <div className={classes.Container}>
                         <div style={burgerBox}>
                             <h2> Your Burger </h2>

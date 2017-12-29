@@ -139,7 +139,7 @@ class Auth extends Component {
                 <div className={classes.content}>
                     {errorMessage}
                     {form}
-                    <hr/>
+                    <hr className={classes.AuthHr}/>
                     <p className={classes.msg}>{msg}</p>
                     <Button 
                         clicked={this.swithAuthModeHandler}
