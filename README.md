@@ -15,4 +15,4 @@ Web app that allows you to build a burger and purchase it!
 
 - Enabled CSS Modules
 - Used lazy loading (unecessary in an app of this size, but did it just for practice)
-- Use of axios interceptors 
+- Used axios interceptors 
